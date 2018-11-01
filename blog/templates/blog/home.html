@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+{% for post in posts %}
+<div class="col-md-8">
+    <div class="post">
+        <div class="date">
+            <p>published: {{ post.published_date }}</p>
+        </div>
+        <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        <p>{{ post.content|linebreaksbr }}</p>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="image">
+        {% if post.image %}
+        <img src="{{ post.image.url }}" class="img-responsive"/>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
