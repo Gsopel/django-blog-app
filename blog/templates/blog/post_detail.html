@@ -1,26 +1,19 @@
-{% extends 'blog/base.html' %}
-
+{% extends "blog/base.html" %}
 {% block content %}
-<div class="post">
-    {% if post.published_date %}
-    <div class="date">
-        published: {{ post.published_date }}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ post.author }}</a>
+        <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+        {% if post.author == user %}
+          <div>
+            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post_edit' post.id %}">Update</a>
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post_delete' post.id %}">Delete</a>
+          </div>
+        {% endif %}
+      </div>
+      <h2 class="article-title">{{ post.title }}</h2>
+      <p class="article-content">{{ post.content }}</p>
     </div>
-    {% endif %}
-    {% if user.is_authenticated %}
-    <div id="edit">
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-    </div>
-    {% endif %}
-
-    <h1>{{ post.title }}</h1>
-    <p>{{ post.content|linebreaksbr }}</p>
-</div>
-
-<div class="image">
-    {% if post.image %}
-    <img src="{{ post.image.url }}" class="img-responsive"/>
-    {% endif %}
-</div>
-
-{% endblock %}
+  </article>
+{% endblock content %}
