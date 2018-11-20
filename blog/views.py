@@ -6,12 +6,12 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.contrib import messages
 
 
-
 def home(request):
     posts_list = Post.objects.all().order_by('-published_date')
     paginator = Paginator(posts_list, 3)
+    page_request_var = 'page'
 
-    page = request.GET.get('page')
+    page = request.GET.get(page_request_var)
     posts = paginator.get_page(page)
 
     return render(request, 'blog/home.html', {'posts': posts})

@@ -13,8 +13,6 @@
     <!-- Additional CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
-
-
     {% if title %}
     <title>Blog {{ title }}</title>
     {% else %}
@@ -47,6 +45,8 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Blog</a>
+                        <a class="dropdown-item" href="#">Contact Form</a>
+                        <a class="dropdown-item" href="#">Calculator</a>
                         <a class="dropdown-item" href="#">Todo List</a>
                         <a class="dropdown-item" href="#">Calendar</a>
                         <a class="dropdown-item" href="#">Google Maps</a>
@@ -76,7 +76,7 @@
 
 <main role="main" class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
 
             {% block content %}
             {% endblock %}
@@ -84,13 +84,14 @@
         </div>
 
     <!-- Navbar Right Side -->
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="content-section border">
             <h3>Menu</h3>
             <p class='text-muted'>All available apps.
             <div class="list-group">
                 <a class="list-group-item list-group-item-action" href="{% url 'blog_home' %}" title="Home">Blog</a>
                 <a class="list-group-item list-group-item-action disabled" href="{% url 'blog_home' %}" title="Home">Contact Form</a>
+            <a class="list-group-item list-group-item-action disabled" href="{% url 'blog_home' %}" title="Home">Calculator</a>
                 <a class="list-group-item list-group-item-action disabled" href="{% url 'blog_home' %}" title="Home">Todo List</a>
                 <a class="list-group-item list-group-item-action disabled" href="{% url 'blog_home' %}" title="Home">Calendar</a>
                 <a class="list-group-item list-group-item-action disabled" href="{% url 'blog_home' %}" title="Home">Google Maps</a>

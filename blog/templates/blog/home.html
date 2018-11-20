@@ -1,33 +1,39 @@
-
 {% extends "blog/base.html" %}
+
 {% block content %}
-    {% for post in posts %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author }}</a>
-              <small class="text-muted">{{ post.published_date|date:"F d, Y" }}</small>
-            </div>
-            <h2><a class="article-title" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
-          </div>
-        </article>
-    {% endfor %}
+{% for post in posts %}
+<article class="media content-section">
+
+    <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted">On {{ post.published_date|date:"F d, Y" }}</small>
+            , by <a class="disabled-href mr-2" href="#" >{{ post.author }}</a>
+        </div>
+        <h2><a class="article-title" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.snippet }}</p>
+        <div class="read-more">
+            <a class="btn btn-sm btn-secondary" href="{% url 'post_detail' post.id %}" >View</a>
+        </div>
+    </div>
+
+</article>
+
+{% endfor %}
 
 <div class="pagination">
     <span class="step-links">
         {% if posts.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ posts.previous_page_number }}">previous</a>
+            <a href="?page=1" class="badge badge-secondary">&laquo; first</a>
+            <a href="?page={{ posts.previous_page_number }}" class="badge badge-secondary">previous</a>
         {% endif %}
 
-        <span class="current">
+        <span class="current badge badge-dark">
             Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
         </span>
 
         {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">next</a>
-            <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+            <a href="?page={{ posts.next_page_number }}" class="badge badge-secondary">next</a>
+            <a href="?page={{ posts.paginator.num_pages }}" class="badge badge-secondary">last &raquo;</a>
         {% endif %}
     </span>
 </div>
