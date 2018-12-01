@@ -9,8 +9,6 @@ class Post(models.Model):
     published_date = models.DateTimeField(blank=True, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    #author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-
     image = models.ImageField(blank=True, null=True, upload_to='image/%Y/%m/%d')
 
     def publish(self):
@@ -21,4 +19,4 @@ class Post(models.Model):
         return self.title
 
     def snippet(self):
-        return  self.content[:100] + '...'
+        return self.content[:100] + '...'

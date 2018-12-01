@@ -1,13 +1,25 @@
 {% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <article class="media content-section">
-        <div class="media-body">
-    <h2>About Page</h2>
-            <hr>
+<article class="media content-section">
+    <div class="media-body">
+        <h2>About Page</h2>
+        <hr>
 
         <div class="text-muted">Created by: Grzegorz Sopański</div>
         <div class="text-muted">E-mail: <a href="mailto:sopeldev@gmail.com">sopeldev@gmail.com</a></div>
     </div>
-
-    </article>
+</article>
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4"><h2>Contact form</h2></legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
 {% endblock content %}
