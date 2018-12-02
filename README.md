@@ -7,11 +7,11 @@ Copy of the project up and running on your local machine for development and tes
 ## Feature
 1. Blog App - possbility to add new, update, delete posts. 
 2. Contact form - validate form and send e-mail to admin with request. 
-2. Users App - register new users.
+2. Users App - register new users, update user information, login and logout user.
 
 ## Author
 
-* **Grzegorz Sopanski** - (https://github.com/Gsopel)
+**Grzegorz Sopanski** - (https://github.com/Gsopel)
 
 ## License
 
